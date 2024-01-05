@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+
+	<title>TradingView Charting Library demo</title>
+
+	<!-- Fix for iOS Safari zooming bug -->
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+	<script type="text/javascript" src="charting_library/charting_library.min.js"></script>
+	<script type="text/javascript" src="datafeeds/udf/dist/bundle.js"></script>
+
+	<script type="text/javascript">
+		function initOnReady({ type, symbol }) {
+			var urlParams = new URLSearchParams(window.location.search);
+
+			var datafeedUrl = "https://api.injective.network/api/chronos/v1/" + type;
+			var widget = window.tvWidget = new TradingView.widget({
+				// debug: true, // uncomment this line to see Library errors and warnings in the console
+				fullscreen: true,
+				symbol: symbol,
+				interval: '60',
+				container_id: "tv_chart_container",
+
+				//	BEWARE: no trailing slash is expected in feed URL
+				datafeed: new Datafeeds.Datafeed("https://api.injective.network/api/chronos/v1/" + type, 2000),
+				library_path: "charting_library/",
+				locale: "en",
+
+				disabled_features: ["legend_widget", "countdown"],
+				preset: "mobile",
+
+				overrides: {
+					"paneProperties.background": "#2F313A",
+					"paneProperties.vertGridProperties.color": "#454545",
+					"paneProperties.horzGridProperties.color": "#454545",
+					"scalesProperties.textColor": "#AAA"
+				},
+				loading_screen: { backgroundColor: "#2F313A" },
+				enabled_features: ["study_templates", "use_localstorage_for_settings"],
+				charts_storage_url: 'http://saveload.tradingview.com',
+				charts_storage_api_version: "1.1",
+				client_id: 'tradingview.com',
+				user_id: 'public_user_id',
+				custom_css_url: '../../themed.css',
+			});
+
+			window.tvWidget.onChartReady(() => {
+				widget.chart().onDataLoaded().subscribe(null, () => window.ReactNativeWebView.postMessage(JSON.stringify({ type: "onDataLoaded" })));
+			});
+		};
+
+		window.addEventListener('DOMContentLoaded', () => {
+			window.ReactNativeWebView.postMessage(JSON.stringify({ type: "onInit" }));
+		}, false);
+
+		const isUIWebView = /\(ip.*applewebkit(?!.*(version|crios))/i.test(navigator.userAgent);
+		const receiver = isUIWebView ? window : document;
+
+		receiver.addEventListener('message', function (event) {
+			const msg = JSON.parse(event.data);
+			console.log(msg);
+			switch (msg.type) {
+				case "init":
+					initOnReady(msg.value);
+					break;
+				case "change-interval":
+					window.tvWidget.setSymbol(window.tvWidget.symbolInterval().symbol, msg.value)
+					break;
+			}
+		}, false);
+
+
+		// window.addEventListener('DOMContentLoaded', () => window.ReactNativeWebView.postMessage({ type: "init" }), false);
+	</script>
+
+</head>
+
+<body style="margin:0px;">
+	<div id="tv_chart_container"></div>
+</body>
+
+</html>

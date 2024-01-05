@@ -1,0 +1,40 @@
+<svg
+    class="logo-icon"
+    viewBox="-5 -5 48 48"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    version="1.1"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+  >
+    <g>
+      <path
+        d="M35.9904 13.9832C34.0858 6.01262 26.8953 0.0800171 18.3071 0.0800171C8.26578 0.0800171 0.125 8.18462 0.125 18.1813C0.125 26.7314 6.08013 33.8939 14.0902 35.786L35.9904 13.9832V13.9832ZM11.5759 11.4801H25.0383V24.8826H11.5759V11.4801Z"
+        fill="#F6BE00"
+      />
+      <path
+        d="M25.0381 24.8826H30.5814C33.6421 24.8826 36.1248 27.3542 36.1248 30.4013C36.1248 33.4484 33.6421 35.92 30.5814 35.92C27.5207 35.92 25.0381 33.4484 25.0381 30.4013V24.8826Z"
+        fill="url(#logo_gradient2-1)"
+      />
+    </g>
+    <defs>
+      <linearGradient
+        id="logo_gradient2-1"
+        x1="25.0381"
+        y1="24.8826"
+        x2="36.0754"
+        y2="35.9691"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop stop-color="white" />
+        <stop offset="1" stop-color="#7A7A7A" />
+      </linearGradient>
+      <clipPath id="logo_gradient1-1">
+        <rect
+          width="36"
+          height="35.84"
+          fill="white"
+          transform="translate(0.125 0.0800171)"
+        />
+      </clipPath>
+    </defs>
+  </svg>

@@ -1,0 +1,68 @@
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@app/*": [
+        "src/*"
+      ],
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@assets/*": [
+        "assets/*"
+      ],
+      "@contexts/*": [
+        "src/common/contexts/*"
+      ],
+      "@screens/*": [
+        "src/screens/*"
+      ],
+      "@api": [
+        "src/common/api/index"
+      ],
+      "@api/*": [
+        "src/common/api/*"
+      ],
+      "@models/*": [
+        "src/common/models/*"
+      ],
+      "@tools/*": [
+        "src/common/tools/*"
+      ],
+      "@utils/*": [
+        "src/common/utils/*"
+      ],
+      "@hooks": [
+        "src/common/hooks/index"
+      ],
+      "@hooks/*": [
+        "src/common/hooks/*"
+      ],
+      "@mocks/*": [
+        "src/common/mocks/*"
+      ],
+      "@navigation/*": [
+        "src/common/navigation/*"
+      ],
+      "@constants/*": [
+        "src/common/constants/*"
+      ],
+      "@transformers/*": [
+        "src/common/transformers/*"
+      ],
+      "@i18n": [
+        "src/common/i18n/index"
+      ]
+    }
+  },
+  "exclude": [
+    "externals"
+  ],
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    ".expo/types/**/*.ts",
+    "expo-env.d.ts"
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "name": "qwerty-app",
+  "expo": {
+    "name": "QWERTY",
+    "owner": "qwertyexchange",
+    "slug": "qwerty",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "qwerty",
+    "userInterfaceStyle": "dark",
+    "backgroundColor": "#0D0E13",
+    "splash": {
+      "image": "./assets/images/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0D0E13"
+    },
+    "experiments": {
+      "typedRoutes": true
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": ["assets/**/*"],
+    "plugins": [
+      [
+        "expo-barcode-scanner",
+        {
+          "cameraPermission": "Allow $(PRODUCT_NAME) to access camera.",
+          "microphonePermission": "Allow $(PRODUCT_NAME) to access microphone."
+        }
+      ],
+      [
+        "expo-local-authentication",
+        {
+          "faceIDPermission": "Allow $(PRODUCT_NAME) to use Face ID."
+        }
+      ],
+      [
+        "./plugins/withAndroidColorEdgeEffect",
+        {
+          "color": "#F6BE00"
+        }
+      ],
+      "./plugins/withLocalTradeView",
+      "@logrocket/react-native",
+      "sentry-expo"
+    ],
+    "ios": {
+      "config": {
+        "usesNonExemptEncryption": false
+      },
+      "supportsTablet": true,
+      "bundleIdentifier": "exchange.qwerty.app"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "backgroundColor": "#0D0E13"
+      },
+      "package": "exchange.qwerty.app"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "4d35a78b-19d9-4deb-bc6b-d17fca6f0fd4"
+      }
+    }
+  },
+  "hooks": {
+    "postPublish": [
+      {
+        "file": "sentry-expo/upload-sourcemaps",
+        "config": {
+          "organization": "qwerty-ak",
+          "project": "qwerty-mobile"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  // put this in your settings object
+  "tailwindCSS.classAttributes": [
+    // ...
+    "style"
+  ],
+  "tailwindCSS.experimental.classRegex": ["tw`([^`]*)", ["tw.style\\(([^)]*)\\)", "'([^']*)'"]],
+  "cSpell.words": [
+    "Golos",
+    "hanalk",
+    "injective",
+    "injectivelabs",
+    "keychain",
+    "logrocket",
+    "PASSCODE",
+    "subaccount",
+    "tanstack",
+    "twrnc"
+  ]
+}
